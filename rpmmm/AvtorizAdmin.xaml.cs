@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using rpmmm;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
     /// Логика взаимодействия для AvtorizAdmin.xaml
@@ -47,8 +47,8 @@ namespace rpmm
                         if (user.Loginad == log.Text && user.passwordd == pas.Text)
                         {
                             MessageBox.Show("Вход успешен");
-                            Profile profile = new Profile(user);
-                            profile.Show();
+                            Glavniy gl = new Glavniy();
+                            gl.Show();
                             this.Close();
                             log.Text = "";
                             pas.Text = "";

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using rpmmm;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
     /// Логика взаимодействия для AvtorizUser.xaml

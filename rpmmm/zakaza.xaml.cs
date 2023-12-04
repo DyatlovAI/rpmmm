@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
-    /// Логика взаимодействия для Zakaz.xaml
+    /// Логика взаимодействия для zakaza.xaml
     /// </summary>
-    public partial class Zakaz : Window
+    public partial class zakaza : Window
     {
-        public Zakaz()
+        public zakaza()
         {
             InitializeComponent();
         }

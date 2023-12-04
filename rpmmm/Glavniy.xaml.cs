@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using rpmmm;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
     /// Логика взаимодействия для Glavniy.xaml
@@ -30,5 +31,68 @@ namespace rpmm
             //prof.Show();
             //this.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //Zakaz zak = new Zakaz();
+            //zak.Show();
+            //this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //Zakaz zak = new Zakaz();
+            //zak.Show();
+            //this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //Zakaz zak = new Zakaz();
+            //zak.Show();
+            //this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            //Zakaz zak = new Zakaz();
+            //zak.Show();
+            //this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            //Zakaz zak = new Zakaz();
+            //zak.Show();
+            //this.Close();
+        }
+        private void Border_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (WiseLanceEntities2 db = new WiseLanceEntities2())
+            {
+                var ispolnitelData = db.Ispolnitel.Take(6).ToList();
+
+                SetTextOrPlaceholder(TextBlock1, ispolnitelData, 0);
+                SetTextOrPlaceholder(TextBlock2, ispolnitelData, 1);
+                SetTextOrPlaceholder(TextBlock3, ispolnitelData, 2);
+                SetTextOrPlaceholder(TextBlock4, ispolnitelData, 3);
+                SetTextOrPlaceholder(TextBlock5, ispolnitelData, 4);
+                SetTextOrPlaceholder(TextBlock6, ispolnitelData, 5);
+            }
+        }
+            private void SetTextOrPlaceholder(TextBlock textBlock, List<Ispolnitel> ispolnitelData, int index)
+            {
+                if (index < ispolnitelData.Count)
+                {
+                    string fullName = $"{ispolnitelData[index].SecondName} {ispolnitelData[index].FirstName}";
+                    textBlock.Text = fullName;
+                }
+                else
+                {
+                    textBlock.Text = "Здесь можешь быть ты";
+                }
+            }
+        }
     }
-}
+    
+

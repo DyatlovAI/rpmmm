@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

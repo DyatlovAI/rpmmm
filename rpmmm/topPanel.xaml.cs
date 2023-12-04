@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using rpmmm;
 
-namespace rpmm
+namespace rpmmm
 {
     /// <summary>
     /// Логика взаимодействия для topPanel.xaml
@@ -27,9 +28,9 @@ namespace rpmm
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Profile prof = new Profile();
-            //prof.Show();
-            //this.CloseWindow();
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.CloseWindow();
         }
         private void CloseWindow() 
         {
@@ -49,7 +50,7 @@ namespace rpmm
 
         private void Button_Click_Zakaz(object sender, RoutedEventArgs e)
         {
-            Zakaz zak = new Zakaz();
+            zakaza zak = new zakaza();
             zak.Show();
             this.CloseWindow();
         }
