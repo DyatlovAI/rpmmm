@@ -13,10 +13,10 @@ namespace rpmmm
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WiseLanceEntities2 : DbContext
+    public partial class WiseLanceEntities3 : DbContext
     {
-        public WiseLanceEntities2()
-            : base("name=WiseLanceEntities2")
+        public WiseLanceEntities3()
+            : base("name=WiseLanceEntities3")
         {
         }
     
@@ -27,6 +27,7 @@ namespace rpmmm
     
         public virtual DbSet<Adminis> Adminis { get; set; }
         public virtual DbSet<Ispolnitel> Ispolnitel { get; set; }
+        public virtual DbSet<Koncurs> Koncurs { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Zakaz> Zakaz { get; set; }
         public virtual DbSet<Zakazchik> Zakazchik { get; set; }

@@ -18,6 +18,15 @@
             <StackPanel>
                 <ComboBox x:Name="firstt" materialDesign:HintAssist.Hint="Номер исполнителя"  HorizontalAlignment="Stretch"  VerticalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
                 <TextBox materialDesign:HintAssist.Hint="Описание" x:Name="second" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <ComboBox x:Name="kat" materialDesign:HintAssist.Hint="Категория"  HorizontalAlignment="Stretch"  VerticalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBoxItem>Programming</ComboBoxItem>
+                    <ComboBoxItem>Design</ComboBoxItem>
+                    <ComboBoxItem>SMM-Manager</ComboBoxItem>
+                    <ComboBoxItem>Marketing</ComboBoxItem>
+                    <ComboBoxItem>Copywriting</ComboBoxItem>
+                    <ComboBoxItem>Management</ComboBoxItem>
+
+                </ComboBox>
                 <TextBox materialDesign:HintAssist.Hint="Цена" x:Name="third" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <TextBox materialDesign:HintAssist.Hint="Время" x:Name="timeTextBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

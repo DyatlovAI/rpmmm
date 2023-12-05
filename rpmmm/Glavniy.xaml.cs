@@ -68,7 +68,7 @@ namespace rpmmm
         }
         private void Border_Loaded(object sender, RoutedEventArgs e)
         {
-            using (WiseLanceEntities2 db = new WiseLanceEntities2())
+            using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
                 var ispolnitelData = db.Ispolnitel.Take(6).ToList();
 

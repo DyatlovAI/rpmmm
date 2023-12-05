@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8c1424e506764cfd93faf39da2ad4a28" Name="Diagram1">
+      <Diagram DiagramId="764a9756ea3747a1afe090c44d061153" Name="Diagram1">
         <EntityTypeShape EntityType="WiseLanceModel.Adminis" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WiseLanceModel.Ispolnitel" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WiseLanceModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WiseLanceModel.Zakaz" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WiseLanceModel.Koncurs" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WiseLanceModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WiseLanceModel.Zakaz" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WiseLanceModel.Zakazchik" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="WiseLanceModel.FK__Ispolnite__IdZak__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="WiseLanceModel.FK__Zakaz__IdZakazch__59063A47" ManuallyRouted="false" />

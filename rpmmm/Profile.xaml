@@ -9,16 +9,31 @@
         WindowState="Maximized"
          Title="Профиль" Height="1080" Width="1920">
     <Grid Background="#E8F3F2">
-        
-            <local:topPanel HorizontalAlignment="Stretch" Loaded="topPanel_Loaded"/>
-        
+        <local:topPanelUser HorizontalAlignment="Stretch" />
+        <Border MinWidth="1700" MinHeight="850" Background="White" Margin="15" VerticalAlignment="Center" Padding="30" MaxWidth="1750" CornerRadius="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-        <Border MinWidth="1700" MinHeight="850" Background="white" Margin="15" VerticalAlignment="Center" Padding="30" MaxWidth="1750" CornerRadius="20" >
-            <Button Content="Выйти" FontSize="20"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,1542,0" Click="Button_Click"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image Source="C:\Users\zepa_\source\repos\rpmmm\rpmmm\foto\pngwing.com.png" Width="150" Height="150" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock x:Name="lastNameTextBlock" Text="{Binding SelectedItem.SecondName, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="firstNameTextBlock" Text="{Binding SelectedItem.FirstName, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="patronymicTextBlock" Text="{Binding SelectedItem.Patronymic, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="ratingTextBlock" Text="{Binding SelectedItem.Rating, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="requisitesTextBlock" Text="{Binding SelectedItem.Requisites, ElementName=dataGrid}"/>
+                    </StackPanel>
+                </StackPanel>
+               
+               
+            </Grid>
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
         </Border>
-
     </Grid>
 </Window>

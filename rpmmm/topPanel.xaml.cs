@@ -64,7 +64,9 @@ namespace rpmmm
 
         private void Button_Click_Concurs(object sender, RoutedEventArgs e)
         {
-
+            Koncurs kon = new Koncurs();
+            kon.Show();
+            this.CloseWindow();
         }
     }
 }

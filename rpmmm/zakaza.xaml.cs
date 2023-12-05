@@ -19,16 +19,18 @@ namespace rpmmm
     /// </summary>
     public partial class zakaza : Window
     {
-        private WiseLanceEntities2 db;
+        private WiseLanceEntities3 db;
 
         public zakaza()
         {
 
             InitializeComponent();
 
-            db = new WiseLanceEntities2();
+            db = new WiseLanceEntities3();
             LoadData();
+
         }
+
         private Zakaz selectedZakaz;
         private void LoadData()
         {
@@ -45,7 +47,7 @@ namespace rpmmm
             }
         }
 
-
+      
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
 

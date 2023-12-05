@@ -25,12 +25,7 @@ namespace rpmmm
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            register reg = new register();
-            reg.Show();
-            this.Close();
-        }
+       
 
         private void Button_Click_WL(object sender, RoutedEventArgs e)
         {
@@ -50,7 +45,7 @@ namespace rpmmm
         {
             string login = log.Text;
             string password = pas.Text;
-            bool isZakazchik = Zakazchik.IsChecked == true;
+            int isZakazchik = Zakazchik.IsChecked == true ? 1 : 0;
 
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
             {
@@ -58,13 +53,14 @@ namespace rpmmm
                 return;
             }
 
-            bool isAuthenticated = AuthenticateUser(login, password, isZakazchik);
-
-            if (isAuthenticated)
+            Ispolnitel user = GetAuthenticatedUser(login, password, isZakazchik);
+            if (user != null)
             {
                 MessageBox.Show("Вход успешен!");
-                Glavniy gl = new Glavniy();
-                gl.Show();
+                
+
+                Profile pr = new Profile(user);
+                pr.Show();
                 this.Close();
             }
             else
@@ -72,29 +68,35 @@ namespace rpmmm
                 MessageBox.Show("Неверные логин или пароль.");
             }
         }
+    
 
-        private bool AuthenticateUser(string login, string password, bool isZakazchik)
+        private dynamic GetAuthenticatedUser(string login, string password, int isZakazchik)
         {
-            using (WiseLanceEntities2 db = new WiseLanceEntities2())
+            using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
-                if (isZakazchik)
+                if (isZakazchik == 1)
                 {
-                    var user = db.Zakazchik.FirstOrDefault(u => u.Loginad == login && u.passwordd == password);
-                    return user != null;
+                    return db.Zakazchik.FirstOrDefault(u => u.Loginad == login && u.passwordd == password);
                 }
                 else
                 {
-                    var user = db.Ispolnitel.FirstOrDefault(u => u.Loginad == login && u.passwordd == password);
-                    return user != null;
+                    return db.Ispolnitel.FirstOrDefault(u => u.Loginad == login && u.passwordd == password);
                 }
             }
         }
 
-            private void Button_Click_2(object sender, RoutedEventArgs e)
+        private bool AuthenticateUser(string login, string password, int isZakazchik)
         {
-            forgot forl = new forgot();
-            forl.Show();
-            this.Close();
+            using (WiseLanceEntities3 db = new WiseLanceEntities3())
+            {
+                Ispolnitel user = GetAuthenticatedUser(login, password, isZakazchik);
+                return user != null;
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

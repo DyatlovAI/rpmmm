@@ -67,7 +67,7 @@ namespace rpmmm
           
             var editedData = GetEditedData();
 
-            using (var dbContext = new WiseLanceEntities2()) 
+            using (var dbContext = new WiseLanceEntities3()) 
             {
                 var existingData = dbContext.Zakaz.Find(editedData.ID_zakaz);
 

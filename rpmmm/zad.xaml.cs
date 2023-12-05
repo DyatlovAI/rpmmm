@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,43 +11,38 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using rpmmm;
 
 namespace rpmmm
 {
     /// <summary>
-    /// Логика взаимодействия для Profile.xaml
+    /// Логика взаимодействия для zad.xaml
     /// </summary>
-    public partial class Profile : Window
+    public partial class zad : Window
     {
-        Ispolnitel user;
-        
-        public Profile(Ispolnitel user)
+        Zakaz zak;
+        public zad(Zakaz zak)
         {
             InitializeComponent();
-            
-            this.user = user;
+            this.zak = zak;
             NewData();
         }
-
         public void NewData()
         {
             using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
-                foreach (var e in db.Ispolnitel)
+                foreach (var e in db.Zakaz)
                 {
-                    if (e.ID_Ispolnitel == user.ID_Ispolnitel)
+                    if (e.ID_zakaz == zak.ID_zakaz)
                     {
-                        lastNameTextBlock.Text = e.SecondName;
-                        firstNameTextBlock.Text = e.FirstName;
-                        patronymicTextBlock.Text = e.Patronymic;
-                        ratingTextBlock.Text = e.Reyt;
-                        requisitesTextBlock.Text = e.Rekvezit;
-
+                        op.Text = e.Opisaniye;
+                        pr.Text = e.Price.ToString();
                     }
                 }
             }
         }
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

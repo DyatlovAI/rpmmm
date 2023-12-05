@@ -65,7 +65,7 @@ namespace rpmmm
             }
             string userTypeValue = (checkBoxZakazchik.IsChecked == true) ? "Zakazchik" : "Ispolnitel";
 
-            using (WiseLanceEntities2 db = new WiseLanceEntities2())
+            using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
                 string userType = (checkBoxZakazchik.IsChecked == true) ? "Zakazchik" : "Ispolnitel";
                 dynamic newUser = null;

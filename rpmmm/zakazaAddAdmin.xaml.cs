@@ -33,7 +33,7 @@ namespace rpmmm
         }
         private void InitializeComboBox()
         {
-            using (WiseLanceEntities2 db = new WiseLanceEntities2())
+            using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
                 var zakazchikData = db.Zakazchik.ToList();
                 firstt.ItemsSource = zakazchikData;
@@ -52,17 +52,21 @@ namespace rpmmm
                 int selectedZakazchikId = (int)firstt.SelectedValue;
                 string opisaniye = second.Text;
                 int price = int.Parse(third.Text);
+                string selectedCategory = (kat.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
-                using (WiseLanceEntities2 db = new WiseLanceEntities2())
+
+                using (WiseLanceEntities3 db = new WiseLanceEntities3())
                 {
                     if (TimeSpan.TryParse(timeText, out TimeSpan fixedTime))
                     {
                         Zakaz newEntity = new Zakaz
                         {
+                             
                             Opisaniye = opisaniye,
                             Price = price,
                             Vremya = fixedTime,
-                            IdZakazchik = selectedZakazchikId
+                            IdZakazchik = selectedZakazchikId,
+                            Kategoria = selectedCategory // Добавляем значение из ComboBox в поле Kategoria
                         };
 
                         db.Zakaz.Add(newEntity);

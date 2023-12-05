@@ -25,6 +25,7 @@ namespace rpmmm
         public string Opisaniye { get; set; }
         public System.TimeSpan Vremya { get; set; }
         public int Price { get; set; }
+        public string Kategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ispolnitel> Ispolnitel { get; set; }

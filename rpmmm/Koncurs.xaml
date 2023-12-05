@@ -1,0 +1,31 @@
+﻿<Window x:Class="rpmmm.Koncurs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rpmmm"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    WindowState="Maximized"
+    Title="Koncurs" Height="1080" Width="1920">
+
+    <Grid>
+        <local:topPanel HorizontalAlignment="Stretch"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Border MinWidth="1650" MinHeight="800" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
+                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dataGrid_SelectionChanged_1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер исполнителя" Binding="{Binding ID_Ispolnitel}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"/>
+                        <DataGridTextColumn Header="Рейтинг" Binding="{Binding Reyt}"/>
+                        <DataGridTextColumn Header="Реквизиты" Binding="{Binding Rekvezit}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

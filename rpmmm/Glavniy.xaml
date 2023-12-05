@@ -38,7 +38,7 @@
                 <Border MinWidth="400" Background="white" Margin="15" VerticalAlignment="Center" Padding="30" MaxWidth="450" CornerRadius="20" Height="200">
                     <StackPanel>
                         <Image Source="C:\Users\zepa_\source\repos\rpmm\rpmm\foto\g265.png" Width="300" Height="100" VerticalAlignment="Top" />
-                        <Button Content="Капирайтинг" FontSize="20" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,10,0"/>
+                        <Button Content="Копирайтинг" FontSize="20" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,10,0"/>
                     </StackPanel>
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>

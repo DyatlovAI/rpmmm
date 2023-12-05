@@ -38,7 +38,7 @@ namespace rpmmm
 
             if (log.Text != "" && log.Text != "Логин" && pas.Text != "")
             {
-                using (WiseLanceEntities2 db = new WiseLanceEntities2())
+                using (WiseLanceEntities3 db = new WiseLanceEntities3())
                 {
                     bool isUserFound = false;
 

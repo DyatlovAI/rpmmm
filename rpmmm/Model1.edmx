@@ -30,6 +30,17 @@
           <Property Name="Loginad" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="passwordd" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="Koncurs">
+          <Key>
+            <PropertyRef Name="ID_koncurs" />
+          </Key>
+          <Property Name="ID_koncurs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecondName" Type="varchar" MaxLength="255" />
+          <Property Name="MinReyt" Type="int" />
+          <Property Name="Summa" Type="int" />
+          <Property Name="Opisanie" Type="varchar" MaxLength="255" />
+          <Property Name="Dni" Type="int" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -49,6 +60,7 @@
           <Property Name="Opisaniye" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Vremya" Type="time" Precision="7" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Kategoria" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Zakazchik">
           <Key>
@@ -90,6 +102,7 @@
         <EntityContainer Name="Хранилище WiseLanceModelContainer">
           <EntitySet Name="Adminis" EntityType="Self.Adminis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ispolnitel" EntityType="Self.Ispolnitel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Koncurs" EntityType="Self.Koncurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakazchik" EntityType="Self.Zakazchik" Schema="dbo" store:Type="Tables" />
@@ -133,6 +146,17 @@
           <Property Name="passwordd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Zakaz" Relationship="Self.FK__Ispolnite__IdZak__5DCAEF64" FromRole="Ispolnitel" ToRole="Zakaz" />
         </EntityType>
+        <EntityType Name="Koncurs">
+          <Key>
+            <PropertyRef Name="ID_koncurs" />
+          </Key>
+          <Property Name="ID_koncurs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MinReyt" Type="Int32" />
+          <Property Name="Summa" Type="Int32" />
+          <Property Name="Opisanie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Dni" Type="Int32" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -152,6 +176,7 @@
           <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Vremya" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Kategoria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ispolnitel" Relationship="Self.FK__Ispolnite__IdZak__5DCAEF64" FromRole="Zakaz" ToRole="Ispolnitel" />
           <NavigationProperty Name="Zakazchik" Relationship="Self.FK__Zakaz__IdZakazch__59063A47" FromRole="Zakaz" ToRole="Zakazchik" />
         </EntityType>
@@ -193,9 +218,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WiseLanceEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WiseLanceEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adminis" EntityType="Self.Adminis" />
           <EntitySet Name="Ispolnitel" EntityType="Self.Ispolnitel" />
+          <EntitySet Name="Koncurs" EntityType="Self.Koncurs" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
           <EntitySet Name="Zakazchik" EntityType="Self.Zakazchik" />
@@ -213,7 +239,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище WiseLanceModelContainer" CdmEntityContainer="WiseLanceEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WiseLanceModelContainer" CdmEntityContainer="WiseLanceEntities3">
           <EntitySetMapping Name="Adminis">
             <EntityTypeMapping TypeName="WiseLanceModel.Adminis">
               <MappingFragment StoreEntitySet="Adminis">
@@ -241,6 +267,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Koncurs">
+            <EntityTypeMapping TypeName="WiseLanceModel.Koncurs">
+              <MappingFragment StoreEntitySet="Koncurs">
+                <ScalarProperty Name="ID_koncurs" ColumnName="ID_koncurs" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="MinReyt" ColumnName="MinReyt" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="WiseLanceModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -260,6 +298,7 @@
                 <ScalarProperty Name="Opisaniye" ColumnName="Opisaniye" />
                 <ScalarProperty Name="Vremya" ColumnName="Vremya" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Kategoria" ColumnName="Kategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
