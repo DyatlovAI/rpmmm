@@ -66,7 +66,6 @@ namespace rpmmm
                 Glavniy gl = new Glavniy();
                 gl.Show();
                 this.Close();
-                // Здесь вы можете перейти на другую страницу, показать главное окно и т. д.
             }
             else
             {

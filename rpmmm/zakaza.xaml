@@ -7,34 +7,40 @@
         mc:Ignorable="d"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowState="Maximized"
-        Title="Glavniy" Height="1180" Width="1920">
+        Title="Glavniy" Height="1080" Width="1920">
 
-    <Grid >
-
+    <Grid>
         <local:topPanel HorizontalAlignment="Stretch"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Border MinWidth="600" MinHeight="850" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
-                    </Border.Effect>
-
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Height="190">
-                        <CheckBox Content="Программирование"/>
-                        <CheckBox Content="Дизайн"/>
-                        <CheckBox Content="Маркетинг"/>
-                        <CheckBox Content="Копирайтинг"/>
-                        <CheckBox Content="Менеджмент"/>
-                        <CheckBox Content="SMM-менеджер"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-
-            <Border MinWidth="1250" MinHeight="850" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
+            <Border MinWidth="1650" MinHeight="800" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
+                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dataGrid_SelectionChanged_1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер заказа" Binding="{Binding ID_zakaz}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Номер исполнителя" Binding="{Binding IdZakazchik}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Opisaniye}"/>
+                        <DataGridTextColumn Header="Время" Binding="{Binding Vremya}"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                        <DataGridTemplateColumn Header="Редактировать">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Редактировать" Click="Button_Edit_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Удалить">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить" Click="Button_Delete_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
                 </Border.Effect>
             </Border>
+            <Button Content="Добавить" VerticalAlignment="Top" Margin="0 50 0 0" Click="Button_Click_Add"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -19,9 +19,62 @@ namespace rpmmm
     /// </summary>
     public partial class zakaza : Window
     {
+        private WiseLanceEntities2 db;
+
         public zakaza()
         {
+
             InitializeComponent();
+
+            db = new WiseLanceEntities2();
+            LoadData();
+        }
+        private Zakaz selectedZakaz;
+        private void LoadData()
+        {
+            var zakazData = db.Zakaz.Include("Zakazchik").ToList();
+            dataGrid.ItemsSource = zakazData;
+        }
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItem is Zakaz selectedItem)
+            {
+                db.Zakaz.Remove(selectedItem);
+                db.SaveChanges();
+                LoadData();
+            }
+        }
+
+
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+            var selectedData = GetSelectedData();
+
+            
+            zakazaEditAdmin editWindow = new zakazaEditAdmin(selectedData);
+            editWindow.ShowDialog();
+            if (editWindow.DialogResult == true)
+            {
+                var editedData = editWindow.GetEditedData();
+            }
+        }
+        private Zakaz GetSelectedData()
+        {
+            var selectedRow = dataGrid.SelectedItem as Zakaz;
+            return selectedRow;
+        }
+
+        private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        {
+            zakazaAddAdmin editWindow = new zakazaAddAdmin();
+            var result = editWindow.ShowDialog();
         }
     }
 }
+
