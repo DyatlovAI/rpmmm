@@ -16,15 +16,17 @@ using System.Windows.Shapes;
 namespace rpmmm
 {
     /// <summary>
-    /// Логика взаимодействия для topPanelUser.xaml
+    /// Логика взаимодействия для topPanelZakaz.xaml
     /// </summary>
-    public partial class topPanelUser : UserControl
+    public partial class topPanelZakaz : UserControl
     {
-        public topPanelUser()
+        Zakazchik user;
+        public topPanelZakaz()
         {
+            this.user = user;
+            
             InitializeComponent();
         }
-
 
         private void CloseWindow()
         {
@@ -44,14 +46,16 @@ namespace rpmmm
         private void Button_Click_Zakaz(object sender, RoutedEventArgs e)
         {
 
-            zakazaUser pr = new zakazaUser();
+            zakazZakaz pr = new zakazZakaz(user);
             pr.Show();
             this.CloseWindow();
         }
-
-        private void Button_Click_Frilance(object sender, RoutedEventArgs e)
+        private void Button_Click_Home(object sender, RoutedEventArgs e)
         {
 
+            Glavniy pr = new Glavniy();
+            pr.Show();
+            this.CloseWindow();
         }
 
         private void Button_Click_Conc(object sender, RoutedEventArgs e)
@@ -59,9 +63,11 @@ namespace rpmmm
 
         }
 
-        private void Button_Click_Home(object sender, RoutedEventArgs e)
+        private void Button_Click_Frilance(object sender, RoutedEventArgs e)
         {
-
+            Glavniy pr = new Glavniy();
+            pr.Show();
+            this.CloseWindow();
         }
     }
 }

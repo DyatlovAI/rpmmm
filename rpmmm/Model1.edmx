@@ -22,13 +22,13 @@
           </Key>
           <Property Name="ID_Ispolnitel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdZakaz" Type="int" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="SecondName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="255" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="255" />
-          <Property Name="Reyt" Type="nvarchar" MaxLength="255" />
-          <Property Name="Rekvezit" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Loginad" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="passwordd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Reyt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rekvezit" Type="nvarchar(max)" />
+          <Property Name="Loginad" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordd" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Koncurs">
           <Key>
@@ -57,45 +57,34 @@
           </Key>
           <Property Name="ID_zakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdZakazchik" Type="int" />
-          <Property Name="Opisaniye" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Vremya" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Kategoria" Type="varchar" MaxLength="255" />
+          <Property Name="Opisaniye" Type="nvarchar" MaxLength="255" />
+          <Property Name="Vremya" Type="time" Precision="7" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Kategoria" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Zakazchik">
           <Key>
             <PropertyRef Name="ID_zakazchik" />
           </Key>
           <Property Name="ID_zakazchik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="SecondName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Id_zakaz" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="255" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="255" />
-          <Property Name="Reyt" Type="nvarchar" MaxLength="255" />
-          <Property Name="Rekvezit" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Loginad" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="passwordd" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Reyt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rekvezit" Type="nvarchar(max)" />
+          <Property Name="Loginad" Type="nvarchar" MaxLength="50" />
+          <Property Name="passwordd" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Ispolnite__IdZak__5DCAEF64">
+        <Association Name="FK__Zakazchik__passw__14270015">
           <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
-          <End Role="Ispolnitel" Type="Self.Ispolnitel" Multiplicity="*" />
+          <End Role="Zakazchik" Type="Self.Zakazchik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Zakaz">
               <PropertyRef Name="ID_zakaz" />
             </Principal>
-            <Dependent Role="Ispolnitel">
-              <PropertyRef Name="IdZakaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Zakaz__IdZakazch__59063A47">
-          <End Role="Zakazchik" Type="Self.Zakazchik" Multiplicity="0..1" />
-          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Zakazchik">
-              <PropertyRef Name="ID_zakazchik" />
-            </Principal>
-            <Dependent Role="Zakaz">
-              <PropertyRef Name="IdZakazchik" />
+            <Dependent Role="Zakazchik">
+              <PropertyRef Name="Id_zakaz" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -106,13 +95,9 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakazchik" EntityType="Self.Zakazchik" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Ispolnite__IdZak__5DCAEF64" Association="Self.FK__Ispolnite__IdZak__5DCAEF64">
+          <AssociationSet Name="FK__Zakazchik__passw__14270015" Association="Self.FK__Zakazchik__passw__14270015">
             <End Role="Zakaz" EntitySet="Zakaz" />
-            <End Role="Ispolnitel" EntitySet="Ispolnitel" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Zakaz__IdZakazch__59063A47" Association="Self.FK__Zakaz__IdZakazch__59063A47">
             <End Role="Zakazchik" EntitySet="Zakazchik" />
-            <End Role="Zakaz" EntitySet="Zakaz" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -137,14 +122,13 @@
           </Key>
           <Property Name="ID_Ispolnitel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdZakaz" Type="Int32" />
-          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Reyt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Rekvezit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Loginad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="passwordd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Zakaz" Relationship="Self.FK__Ispolnite__IdZak__5DCAEF64" FromRole="Ispolnitel" ToRole="Zakaz" />
+          <Property Name="Reyt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rekvezit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Loginad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Koncurs">
           <Key>
@@ -173,48 +157,36 @@
           </Key>
           <Property Name="ID_zakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdZakazchik" Type="Int32" />
-          <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Vremya" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Kategoria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ispolnitel" Relationship="Self.FK__Ispolnite__IdZak__5DCAEF64" FromRole="Zakaz" ToRole="Ispolnitel" />
-          <NavigationProperty Name="Zakazchik" Relationship="Self.FK__Zakaz__IdZakazch__59063A47" FromRole="Zakaz" ToRole="Zakazchik" />
+          <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Vremya" Type="Time" Precision="7" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Kategoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zakazchik" Relationship="Self.FK__Zakazchik__passw__14270015" FromRole="Zakaz" ToRole="Zakazchik" />
         </EntityType>
         <EntityType Name="Zakazchik">
           <Key>
             <PropertyRef Name="ID_zakazchik" />
           </Key>
           <Property Name="ID_zakazchik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_zakaz" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Reyt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Rekvezit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Loginad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="passwordd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Zakaz" Relationship="Self.FK__Zakaz__IdZakazch__59063A47" FromRole="Zakazchik" ToRole="Zakaz" />
+          <Property Name="Reyt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rekvezit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Loginad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passwordd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK__Zakazchik__passw__14270015" FromRole="Zakazchik" ToRole="Zakaz" />
         </EntityType>
-        <Association Name="FK__Ispolnite__IdZak__5DCAEF64">
+        <Association Name="FK__Zakazchik__passw__14270015">
           <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
-          <End Role="Ispolnitel" Type="Self.Ispolnitel" Multiplicity="*" />
+          <End Role="Zakazchik" Type="Self.Zakazchik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Zakaz">
               <PropertyRef Name="ID_zakaz" />
             </Principal>
-            <Dependent Role="Ispolnitel">
-              <PropertyRef Name="IdZakaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Zakaz__IdZakazch__59063A47">
-          <End Role="Zakazchik" Type="Self.Zakazchik" Multiplicity="0..1" />
-          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Zakazchik">
-              <PropertyRef Name="ID_zakazchik" />
-            </Principal>
-            <Dependent Role="Zakaz">
-              <PropertyRef Name="IdZakazchik" />
+            <Dependent Role="Zakazchik">
+              <PropertyRef Name="Id_zakaz" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -225,13 +197,9 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
           <EntitySet Name="Zakazchik" EntityType="Self.Zakazchik" />
-          <AssociationSet Name="FK__Ispolnite__IdZak__5DCAEF64" Association="Self.FK__Ispolnite__IdZak__5DCAEF64">
+          <AssociationSet Name="FK__Zakazchik__passw__14270015" Association="Self.FK__Zakazchik__passw__14270015">
             <End Role="Zakaz" EntitySet="Zakaz" />
-            <End Role="Ispolnitel" EntitySet="Ispolnitel" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Zakaz__IdZakazch__59063A47" Association="Self.FK__Zakaz__IdZakazch__59063A47">
             <End Role="Zakazchik" EntitySet="Zakazchik" />
-            <End Role="Zakaz" EntitySet="Zakaz" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -306,6 +274,7 @@
             <EntityTypeMapping TypeName="WiseLanceModel.Zakazchik">
               <MappingFragment StoreEntitySet="Zakazchik">
                 <ScalarProperty Name="ID_zakazchik" ColumnName="ID_zakazchik" />
+                <ScalarProperty Name="Id_zakaz" ColumnName="Id_zakaz" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="SecondName" ColumnName="SecondName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />

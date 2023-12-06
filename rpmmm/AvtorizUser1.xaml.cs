@@ -11,39 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.SqlServer.Server;
-using rpmmm;
 
 namespace rpmmm
 {
     /// <summary>
-    /// Логика взаимодействия для AvtorizUser.xaml
+    /// Логика взаимодействия для AvtorizUser1.xaml
     /// </summary>
-    public partial class AvtorizUser : Window
+    public partial class AvtorizUser1 : Window
     {
-        private WiseLanceEntities3 context;
-        public AvtorizUser(WiseLanceEntities3 context)
+        public AvtorizUser1()
         {
             InitializeComponent();
         }
 
-       
-
-        private void Button_Click_WL(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
+        
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            register reg = new register();
-            reg.Show();
-            this.Close();
-        }
-
-        private void Button_Click_GL(object sender, RoutedEventArgs e)
         {
             if (log.Text != "" && log.Text != "Логин" && pas.Text != "")
             {
@@ -51,12 +34,12 @@ namespace rpmmm
                 {
                     bool isUserFound = false;
 
-                    foreach (Ispolnitel user in db.Ispolnitel)
+                    foreach (Zakazchik user in db.Zakazchik)
                     {
                         if (user.Loginad == log.Text && user.passwordd == pas.Text)
                         {
                             MessageBox.Show("Вход успешен");
-                            Profile gl = new Profile(user);
+                            ProfileAZak gl = new ProfileAZak(user);
                             gl.Show();
                             this.Close();
                             log.Text = "";
@@ -74,28 +57,18 @@ namespace rpmmm
             }
         }
 
-            
-            
-
-        
-    
-
-        private dynamic GetAuthenticatedUser(string login, string password)
-        {
-            using (WiseLanceEntities3 db = new WiseLanceEntities3())
-            {
-
-                
-                    return db.Ispolnitel.FirstOrDefault(u => u.Loginad == login && u.passwordd == password);
-               
-            }
-        }
-
-    
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            register pr = new register();
+            pr.Show();
+            this.Close();
         }
     }
 }

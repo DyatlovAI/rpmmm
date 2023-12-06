@@ -1,0 +1,39 @@
+﻿<Window x:Class="rpmmm.ProfileAZak"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rpmmm"
+        mc:Ignorable="d"
+           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    WindowState="Maximized"
+     Title="Профиль" Height="1080" Width="1920">
+    <Grid Background="#E8F3F2">
+        <local:topPanelZakaz HorizontalAlignment="Stretch" />
+        <Border MinWidth="1700" MinHeight="850" Background="White" Margin="15" VerticalAlignment="Center" Padding="30" MaxWidth="1750" CornerRadius="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image Source="C:\Users\zepa_\source\repos\rpmmm\rpmmm\foto\pngwing.com.png" Width="150" Height="150" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock x:Name="lastNameTextBlock" Text="{Binding SelectedItem.SecondName, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="firstNameTextBlock" Text="{Binding SelectedItem.FirstName, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="patronymicTextBlock" Text="{Binding SelectedItem.Patronymic, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="ratingTextBlock" Text="{Binding SelectedItem.Rating, ElementName=dataGrid}"/>
+                        <TextBlock x:Name="requisitesTextBlock" Text="{Binding SelectedItem.Requisites, ElementName=dataGrid}"/>
+                    </StackPanel>
+                </StackPanel>
+
+
+            </Grid>
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+        </Border>
+    </Grid>
+</Window>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,39 +11,35 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace rpmmm
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для Main.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Main : Window
     {
-        
-
-        public MainWindow()
+        private WiseLanceEntities3 context;
+        public Main()
         {
             InitializeComponent();
+            this.context = context;
         }
+
         private void Button_Avtoriz_Click(object sender, RoutedEventArgs e)
         {
-            Main avtorizUser = new Main();
-            avtorizUser.Show();
+
+            AvtorizUser1 avt = new AvtorizUser1();
+            avt.Show();
             this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AvtorizAdmin avtorizAdmin = new AvtorizAdmin();
-            avtorizAdmin.Show();
+            AvtorizUser avt = new AvtorizUser(context);
+            avt.Show();
             this.Close();
-        }
-
-        private void TextBlock_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
         }
     }
 }

@@ -19,14 +19,16 @@ namespace rpmmm
     /// </summary>
     public partial class zakazaUser : Window
     {
+        private Zakaz _originalData;
         private WiseLanceEntities3 db;
+
         public zakazaUser()
         {
             InitializeComponent();
             db = new WiseLanceEntities3();
             LoadData();
         }
-        private Zakaz selectedZakaz;
+
         private void LoadData()
         {
             var zakazData = db.Zakaz.Include("Zakazchik").ToList();
@@ -35,11 +37,33 @@ namespace rpmmm
 
         private void Button_Click_Vibr(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
+            var selectedZakaz = dataGrid.SelectedItem as Zakaz;
+
+            if (selectedZakaz != null)
             {
-                clickedButton.IsEnabled = false;
+                zakazFril editWindow = new zakazFril(selectedZakaz,this); // Передаем this для обновления данных в zakazaUser
+                editWindow.ShowDialog();
+            }
+        }
+
+        public void UpdateSelectedZakaz(Zakaz updatedZakaz)
+        {
+            // Получаем коллекцию, которая является источником данных для dataGrid
+            var itemsSource = dataGrid.ItemsSource as List<Zakaz>;
+
+            if (itemsSource != null)
+            {
+                // Находим индекс элемента, который нужно обновить
+                var index = itemsSource.IndexOf(_originalData);
+
+                if (index != -1)
+                {
+                    // Заменяем элемент на обновленный
+                    itemsSource[index] = updatedZakaz;
+                }
             }
         }
     }
 }
+    
+

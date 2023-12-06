@@ -27,7 +27,7 @@ namespace rpmmm
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AvtorizUser avtorizUser = new AvtorizUser();
+            Main avtorizUser = new Main();
             avtorizUser.Show();
             this.Close();
         }

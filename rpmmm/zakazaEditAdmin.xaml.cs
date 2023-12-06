@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +36,8 @@ namespace rpmmm
             firstt.Text = dataToEdit.IdZakazchik.ToString();
             second.Text = dataToEdit.Opisaniye;
             third.Text = dataToEdit.Price.ToString();
-         
-            timeTextBox.Text = dataToEdit.Vremya.ToString("hh\\:mm\\:ss");
+
+            //timeTextBox.Text = TimeSpan.Parse(dataToEdit.Vremya).ToString("HH:mm:ss");
         }
 
       
@@ -49,7 +50,7 @@ namespace rpmmm
                 IdZakazchik = int.Parse(firstt.Text),
                 Opisaniye = second.Text,
                 Price = int.Parse(third.Text), 
-                Vremya = TimeSpan.Parse(timeTextBox.Text)
+                
             };
 
    
@@ -77,7 +78,7 @@ namespace rpmmm
                     existingData.IdZakazchik = editedData.IdZakazchik;
                     existingData.Opisaniye = editedData.Opisaniye;
                     existingData.Price = editedData.Price;
-                    existingData.Vremya = editedData.Vremya;
+
 
                     dbContext.SaveChanges();
                 }

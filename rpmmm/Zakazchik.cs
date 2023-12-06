@@ -14,13 +14,8 @@ namespace rpmmm
     
     public partial class Zakazchik
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Zakazchik()
-        {
-            this.Zakaz = new HashSet<Zakaz>();
-        }
-    
         public int ID_zakazchik { get; set; }
+        public Nullable<int> Id_zakaz { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Patronymic { get; set; }
@@ -29,7 +24,6 @@ namespace rpmmm
         public string Loginad { get; set; }
         public string passwordd { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zakaz> Zakaz { get; set; }
+        public virtual Zakaz Zakaz { get; set; }
     }
 }

@@ -49,7 +49,13 @@ namespace rpmmm
             try
             {
                 string timeText = timeTextBox.Text;
-                int selectedZakazchikId = (int)firstt.SelectedValue;
+                //int selectedZakazchikId = (int)firstt.SelectedValue;
+                int? selectedZakazchikId = null;
+
+                if (firstt.SelectedValue != null)
+                {
+                    selectedZakazchikId = (int)firstt.SelectedValue;
+                }
                 string opisaniye = second.Text;
                 int price = int.Parse(third.Text);
                 string selectedCategory = (kat.SelectedItem as ComboBoxItem)?.Content?.ToString();
@@ -66,7 +72,7 @@ namespace rpmmm
                             Price = price,
                             Vremya = fixedTime,
                             IdZakazchik = selectedZakazchikId,
-                            Kategoria = selectedCategory // Добавляем значение из ComboBox в поле Kategoria
+                            Kategoria = selectedCategory
                         };
 
                         db.Zakaz.Add(newEntity);

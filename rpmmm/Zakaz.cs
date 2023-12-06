@@ -17,18 +17,17 @@ namespace rpmmm
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Zakaz()
         {
-            this.Ispolnitel = new HashSet<Ispolnitel>();
+            this.Zakazchik = new HashSet<Zakazchik>();
         }
     
         public int ID_zakaz { get; set; }
         public Nullable<int> IdZakazchik { get; set; }
         public string Opisaniye { get; set; }
-        public System.TimeSpan Vremya { get; set; }
-        public int Price { get; set; }
+        public Nullable<System.TimeSpan> Vremya { get; set; }
+        public Nullable<int> Price { get; set; }
         public string Kategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ispolnitel> Ispolnitel { get; set; }
-        public virtual Zakazchik Zakazchik { get; set; }
+        public virtual ICollection<Zakazchik> Zakazchik { get; set; }
     }
 }

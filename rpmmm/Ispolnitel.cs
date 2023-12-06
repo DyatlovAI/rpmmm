@@ -23,7 +23,5 @@ namespace rpmmm
         public string Rekvezit { get; set; }
         public string Loginad { get; set; }
         public string passwordd { get; set; }
-    
-        public virtual Zakaz Zakaz { get; set; }
     }
 }
