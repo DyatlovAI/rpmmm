@@ -32,6 +32,14 @@ namespace rpmmm
             var zakazData = db.Zakaz.Include("Zakazchik").ToList();
             dataGrid.ItemsSource = zakazData;
         }
-        
+
+        private void Button_Click_Vibr(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                clickedButton.IsEnabled = false;
+            }
+        }
     }
 }

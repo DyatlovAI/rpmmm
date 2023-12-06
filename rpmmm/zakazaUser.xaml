@@ -30,7 +30,13 @@
                         <DataGridTextColumn Header="Категория" Binding="{Binding Kategoria}"/>
                         <DataGridTextColumn Header="Время" Binding="{Binding Vremya}"/>
                         <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
-                       
+                        <DataGridTemplateColumn Header="Выбор">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="Vib" Content="Выбрать" Click="Button_Click_Vibr" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -38,7 +44,6 @@
                     <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
                 </Border.Effect>
             </Border>
-
             
         </StackPanel>
     </Grid>
