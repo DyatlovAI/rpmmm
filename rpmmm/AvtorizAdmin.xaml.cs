@@ -36,7 +36,7 @@ namespace rpmmm
         {
             
 
-            if (log.Text != "" && log.Text != "Логин" && pas.Text != "")
+            if (log.Text != "" && log.Text != "Логин" && pas.Password != "")
             {
                 using (WiseLanceEntities3 db = new WiseLanceEntities3())
                 {
@@ -44,14 +44,14 @@ namespace rpmmm
 
                     foreach (Adminis user in db.Adminis)
                     {
-                        if (user.Loginad == log.Text && user.passwordd == pas.Text)
+                        if (user.Loginad == log.Text && user.passwordd == pas.Password)
                         {
                             MessageBox.Show("Вход успешен");
                             Glavniy gl = new Glavniy();
                             gl.Show();
                             this.Close();
                             log.Text = "";
-                            pas.Text = "";
+                            pas.Password = "";
                             isUserFound = true;
                             break;
                         }

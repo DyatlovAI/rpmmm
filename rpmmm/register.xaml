@@ -31,8 +31,8 @@
                             <TextBox materialDesign:HintAssist.Hint="Отчество" x:Name="third" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                             <TextBox materialDesign:HintAssist.Hint="Ожидаемый рейтинг" x:Name="reyt" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                             <TextBox materialDesign:HintAssist.Hint="Реквезиты" x:Name="rekv" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                            <TextBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="pas1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBox materialDesign:HintAssist.Hint="Повторите пароль" x:Name="pas2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="pas1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                            <PasswordBox materialDesign:HintAssist.Hint="Повторите пароль" x:Name="pas2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <CheckBox x:Name="checkBoxZakazchik" Content="Заказчик" Margin="0 0 20 0"/>
                                 <CheckBox  x:Name="checkBoxIspolnitel" Content="Фрилансер"/>

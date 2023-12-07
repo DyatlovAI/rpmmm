@@ -23,7 +23,11 @@ namespace rpmmm
         public register()
         {
             InitializeComponent();
+            
         }
+  
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -46,8 +50,8 @@ namespace rpmmm
             string secondName = second.Text;
             string patronymic = third.Text;
             string rekvezit = rekv.Text;
-            string password = pas1.Text;
-            string repeatPassword = pas2.Text;
+            string password = pas1.Password;
+            string repeatPassword = pas2.Password;
             string reytt = reyt.Text;
 
 

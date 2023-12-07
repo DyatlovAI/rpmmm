@@ -28,7 +28,7 @@ namespace rpmmm
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (log.Text != "" && log.Text != "Логин" && pas.Text != "")
+            if (log.Text != "" && log.Text != "Логин" && pas.Password != "")
             {
                 using (WiseLanceEntities3 db = new WiseLanceEntities3())
                 {
@@ -36,14 +36,14 @@ namespace rpmmm
 
                     foreach (Zakazchik user in db.Zakazchik)
                     {
-                        if (user.Loginad == log.Text && user.passwordd == pas.Text)
+                        if (user.Loginad == log.Text && user.passwordd == pas.Password)
                         {
                             MessageBox.Show("Вход успешен");
                             ProfileAZak gl = new ProfileAZak(user);
                             gl.Show();
                             this.Close();
                             log.Text = "";
-                            pas.Text = "";
+                            pas.Password = "";  
                             isUserFound = true;
                             break;
                         }
