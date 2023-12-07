@@ -56,7 +56,9 @@ namespace rpmmm
 
         private void Button_Click_Conc(object sender, RoutedEventArgs e)
         {
-
+            Koncurs1 pr = new Koncurs1();
+            pr.Show();
+            this.CloseWindow();
         }
 
         private void Button_Click_Home(object sender, RoutedEventArgs e)

@@ -99,6 +99,15 @@
     <Compile Include="Ispolnitel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="konadd.xaml.cs">
+      <DependentUpon>konadd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="konc.xaml.cs">
+      <DependentUpon>konc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Koncurs1.xaml.cs">
+      <DependentUpon>Koncurs1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Koncurs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -184,6 +193,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Glavniy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="konadd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="konc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Koncurs1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

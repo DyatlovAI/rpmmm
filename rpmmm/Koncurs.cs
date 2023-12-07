@@ -20,5 +20,6 @@ namespace rpmmm
         public Nullable<int> Summa { get; set; }
         public string Opisanie { get; set; }
         public Nullable<int> Dni { get; set; }
+        
     }
 }

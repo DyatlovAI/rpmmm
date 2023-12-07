@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,15 +17,14 @@ namespace rpmmm
     /// <summary>
     /// Логика взаимодействия для Koncurs.xaml
     /// </summary>
-    public partial class Koncurs : Window
+    public partial class Koncurs1 : Window
     {
         private WiseLanceEntities3 db;
-        public Koncurs()
+        public Koncurs1()
         {
             InitializeComponent();
             db = new WiseLanceEntities3();
-
-            
+           
         }
 
         private void Border_Loaded(object sender, RoutedEventArgs e)
@@ -51,17 +48,13 @@ namespace rpmmm
                 string fullName = $"Фамилия:{ispolnitelData[index].SecondName}\n Минимальный рейтинг:{ispolnitelData[index].MinReyt}\n Описание заказа:{ispolnitelData[index].Opisanie}\n Сколько дней:{ispolnitelData[index].Dni}\n Оплата:{ispolnitelData[index].Summa}";
                 textBlock.Text = fullName;
             }
-            else
-            {
-                textBlock.Text = "Здесь может быть твой заказ";
-            }
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            konadd avtorizUser = new konadd();
-            avtorizUser.Show();
-            
+
         }
     }
 }

@@ -21,21 +21,57 @@ namespace rpmmm
     {
         private WiseLanceEntities3 db;
         Zakazchik user;
+        private List<Zakaz> allZakazData;
         public zakazZakaz(Zakazchik user)
         {
 
             InitializeComponent();
             this.user = user;
             db = new WiseLanceEntities3();
+            LoadCategories();
             LoadData();
-
         }
 
-        private Zakaz selectedZakaz;
+        private void LoadCategories()
+        {
+            var categories = db.Zakaz.Select(z => z.Kategoria).Distinct().ToList();
+            categoryFilter.ItemsSource = categories;
+        }
+
+        private void CategoryFilter_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            RefreshDataGrid();
+        }
+
+
+
         private void LoadData()
         {
-            var zakazData = db.Zakaz.Include("Zakazchik").ToList();
-            dataGrid.ItemsSource = zakazData;
+            allZakazData = db.Zakaz?.Include("Zakazchik").ToList();
+            dataGrid.ItemsSource = allZakazData;
+        }
+
+        private void RefreshDataGrid()
+        {
+            string selectedCategory = categoryFilter.SelectedItem as string;
+
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                var filteredData = allZakazData?.Where(z => z.Kategoria == selectedCategory).ToList();
+                if (filteredData != null)
+                {
+                    dataGrid.ItemsSource = filteredData;
+                }
+            }
+            else
+            {
+                LoadData();
+            }
+        }
+        private void ResetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            categoryFilter.SelectedItem = null;
+            LoadData();
         }
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {

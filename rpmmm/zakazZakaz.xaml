@@ -12,15 +12,11 @@
     <Grid>
         <local:topPanelZakaz/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <ComboBox x:Name="categoryFilter" Width="100" materialDesign:HintAssist.Hint="Категория" VerticalAlignment="Top" SelectedValuePath="Content" SelectedValue="{Binding Path=FilterCategory, UpdateSourceTrigger=PropertyChanged}">
-                <ComboBoxItem>Programming</ComboBoxItem>
-                <ComboBoxItem>Design</ComboBoxItem>
-                <ComboBoxItem>SMM-Manager</ComboBoxItem>
-                <ComboBoxItem>Marketing</ComboBoxItem>
-                <ComboBoxItem>Copywriting</ComboBoxItem>
-                <ComboBoxItem>Management</ComboBoxItem>
-            </ComboBox>
-            <Border MinWidth="1650" MinHeight="800" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
+            <ComboBox x:Name="categoryFilter" Width="100" materialDesign:HintAssist.Hint="Категория" 
+          VerticalAlignment="Top" SelectedValuePath="Content" SelectedValue="{Binding Path=FilterCategory, UpdateSourceTrigger=PropertyChanged}" 
+          SelectionChanged="CategoryFilter_SelectionChanged"/>
+            <Button Content="Сбросить фильтр" VerticalAlignment="Top"  Click="ResetFilter_Click"/>
+            <Border MinWidth="1450" MinHeight="800" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
 
                 <DataGrid x:Name="dataGrid" AutoGenerateColumns="False"  IsReadOnly="True" CanUserAddRows="False" >
                     <DataGrid.Columns>

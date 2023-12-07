@@ -60,7 +60,9 @@ namespace rpmmm
 
         private void Button_Click_Conc(object sender, RoutedEventArgs e)
         {
-
+            Koncurs pr = new Koncurs();
+            pr.Show();
+            this.CloseWindow();
         }
 
         private void Button_Click_Frilance(object sender, RoutedEventArgs e)

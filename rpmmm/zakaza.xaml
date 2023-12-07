@@ -5,25 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpmmm"
         mc:Ignorable="d"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowState="Maximized"
         Title="Glavniy" Height="1080" Width="1920">
-   
+
     <Grid>
-        
         <local:topPanel HorizontalAlignment="Stretch"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <ComboBox x:Name="categoryFilter" Width="100" materialDesign:HintAssist.Hint="Категория" VerticalAlignment="Top" SelectedValuePath="Content" SelectedValue="{Binding Path=FilterCategory, UpdateSourceTrigger=PropertyChanged}">
-                <ComboBoxItem>Programming</ComboBoxItem>
-                <ComboBoxItem>Design</ComboBoxItem>
-                <ComboBoxItem>SMM-Manager</ComboBoxItem>
-                <ComboBoxItem>Marketing</ComboBoxItem>
-                <ComboBoxItem>Copywriting</ComboBoxItem>
-                <ComboBoxItem>Management</ComboBoxItem>
-            </ComboBox>
-            <Border MinWidth="1650" MinHeight="800" Background="white" Margin="15" Padding="30" MaxWidth="750" CornerRadius="20">
-                
-                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False"  IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dataGrid_SelectionChanged_1">
+        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <ComboBox x:Name="categoryFilter" Width="100" materialDesign:HintAssist.Hint="Категория" 
+                      VerticalAlignment="Top" SelectedValuePath="Content" SelectedValue="{Binding Path=FilterCategory, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectionChanged="CategoryFilter_SelectionChanged"/>
+            <Button Content="Сбросить фильтр" VerticalAlignment="Top"  Click="ResetFilter_Click"/>
+            <Border MinHeight="800" MinWidth="1450" Background="white" Margin="15" Padding="30" MaxWidth="1750" CornerRadius="20">
+                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False"  IsReadOnly="True" CanUserAddRows="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Номер заказа" Binding="{Binding ID_zakaz}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Номер исполнителя" Binding="{Binding IdZakazchik}" IsReadOnly="True"/>
@@ -51,8 +45,10 @@
                     <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
                 </Border.Effect>
             </Border>
-            
+
             <Button Content="Добавить" VerticalAlignment="Top" Margin="0 50 0 0" Click="Button_Click_Add"/>
+            
+
         </StackPanel>
     </Grid>
 </Window>
