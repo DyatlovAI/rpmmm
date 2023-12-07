@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Xceed.Wpf.Toolkit;
+
 
 namespace rpmmm
 {
@@ -49,7 +41,7 @@ namespace rpmmm
             try
             {
                 string timeText = timeTextBox.Text;
-                //int selectedZakazchikId = (int)firstt.SelectedValue;
+                
                 int? selectedZakazchikId = null;
 
                 if (firstt.SelectedValue != null)
@@ -57,9 +49,12 @@ namespace rpmmm
                     selectedZakazchikId = (int)firstt.SelectedValue;
                 }
                 string opisaniye = second.Text;
-                int price = int.Parse(third.Text);
                 string selectedCategory = (kat.SelectedItem as ComboBoxItem)?.Content?.ToString();
-
+                if (!int.TryParse(third.Text, out int price) || price <= 0)
+                {
+                    System.Windows.MessageBox.Show("Пожалуйста, введите корректную положительную цену.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
                 using (WiseLanceEntities3 db = new WiseLanceEntities3())
                 {

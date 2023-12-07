@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using rpmmm;
+
+
 
 namespace rpmmm
 {
@@ -23,24 +16,6 @@ namespace rpmmm
         public register()
         {
             InitializeComponent();
-            
-        }
-  
-
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Main avtorizUser = new Main();
-            avtorizUser.Show();
-            this.Close();
-        }
-
-        private void Button_Click_WL(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
         }
 
         private void Button_Click_Regist(object sender, RoutedEventArgs e)
@@ -54,20 +29,55 @@ namespace rpmmm
             string repeatPassword = pas2.Password;
             string reytt = reyt.Text;
 
+            StringBuilder errorMessage = new StringBuilder();
+            bool hasError = false;
 
-            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(secondName)
-                || string.IsNullOrWhiteSpace(rekvezit) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(repeatPassword))
+            if (!Regex.IsMatch(firstName, @"^[а-яА-Яa-zA-Z]+$"))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля.");
-                return;
+                errorMessage.AppendLine("Пожалуйста, введите корректное имя (только буквы).");
+                hasError = true;
             }
 
-            if (password != repeatPassword)
+            if (!Regex.IsMatch(secondName, @"^[а-яА-Яa-zA-Z]+$"))
             {
-                MessageBox.Show("Пароли не совпадают.");
+                errorMessage.AppendLine("Пожалуйста, введите корректную фамилию (только буквы).");
+                hasError = true;
+            }
+            if (!Regex.IsMatch(patronymic, @"^[а-яА-Яa-zA-Z]+$"))
+            {
+                errorMessage.AppendLine("Пожалуйста, введите корректную фамилию (только буквы).");
+                hasError = true;
+            }
+
+
+            if (!Regex.IsMatch(login, @"^[a-zA-Z0-9_]{4,}$"))
+            {
+                errorMessage.AppendLine("Пожалуйста, введите корректный логин (только буквы, цифры и _).");
+                hasError = true;
+            }
+            if (!Regex.IsMatch(rekvezit, @"^\d+$"))
+            {
+                errorMessage.AppendLine("Пожалуйста, введите корректные реквезиты (только цифры).");
+                hasError = true;
+            }
+
+            if (!Regex.IsMatch(reytt, @"^[1-5]$"))
+            {
+                errorMessage.AppendLine("Пожалуйста, введите рейтинг от 1 до 5.");
+                hasError = true;
+            }
+
+            if (!Regex.IsMatch(password, @"^(?=.*[a-zA-Z])(?=.*[0-9!()-_]).{8,}$"))
+            {
+                errorMessage.AppendLine("Пожалуйста, введите корректный пароль (минимум 8 символов, хотя бы 1 буква, цифра или символ !()-_).");
+                hasError = true;
+            }
+
+            if (hasError)
+            {
+                MessageBox.Show(errorMessage.ToString());
                 return;
             }
-            string userTypeValue = (checkBoxZakazchik.IsChecked == true) ? "Zakazchik" : "Ispolnitel";
 
             using (WiseLanceEntities3 db = new WiseLanceEntities3())
             {
@@ -113,6 +123,19 @@ namespace rpmmm
 
                 MessageBox.Show("Регистрация успешна.");
             }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Main avtorizUser = new Main();
+            avtorizUser.Show();
+            this.Close();
+        }
+
+        private void Button_Click_WL(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
